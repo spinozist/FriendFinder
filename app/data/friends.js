@@ -1,9 +1,19 @@
 var friends = [
     {
-        name: "",
-        photo: "",
-        scores: [
-
-        ]
-    }
+        "name":"Erik",
+        "slackID":"@spinozist",
+        "photo":"",
+        "scores":[
+            5,
+            1,
+            4,
+            4,
+            5,
+            1,
+            2,
+            5,
+            4,
+            1
+          ]
+      }
 ]
