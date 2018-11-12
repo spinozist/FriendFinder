@@ -20,11 +20,57 @@ app.get(`/`, function (req, res) {
     res.sendFile(`${__dirname}/app/public/home.html`);
 });
 
-var friends = [];
+//Friends Array
 
-app.get("/api/friends", function(req, res) {
+var friends = [
+    {
+        "name": "Erik",
+        "slackID": "spinozist",
+        "scores": [
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            5
+        ]
+    },
+    {
+        name: 'Ms. Neutral',
+        slackID: 'vanilla',
+        scores: ['3', '3', '3', '3', '3', '3', '3']
+    },
+
+    {
+        name: 'Mr. Asshole',
+        slackID: 'asshole',
+        scores: ['5', '1', '5', '5', '5', '5', '1']
+    },
+
+    {
+        name: 'Mrs. Nice',
+        slackID: 'nice-lady',
+        scores: ['1', '4', '2', '4', '1', '2', '4']
+    },
+
+    {
+        name: 'Dr. Whatever',
+        slackID: 'whatev-Rx',
+        scores: ['4', '2', '3', '4', '3', '2', '1']
+    },
+    {
+        name: 'Tarah Test',
+        slackID: 'tarah',
+        scores: ['1', '1', '1', '1', '1', '1', '5']
+    }
+];
+
+//
+
+app.get("/api/friends", function (req, res) {
     return res.json(friends);
-  });
+});
 
 app.post("/api/friends", function (req, res) {
     // req.body hosts is equal to the JSON post sent from the user
@@ -40,12 +86,6 @@ app.post("/api/friends", function (req, res) {
 
     res.json(newFriend);
 });
-
-
-
-
-
-
 
 
 app.listen(PORT, function () {

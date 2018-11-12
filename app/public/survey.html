@@ -43,13 +43,14 @@
     </div>
   </div>
 </body>
-<style type="text/css">
-.selector {
-  width: 80%;
-  margin: auto;
-}
 
+<style type="text/css">
+  .selector {
+    width: 80%;
+    margin: auto;
+  }
 </style>
+
 <script type="text/javascript">
 
   var questionArray = [
@@ -77,7 +78,7 @@
     question.attr("class", "card mb-3")
       .html(`
     <div class="card-body" id="question${i}">
-      <h5 class="card-title">${questionArray[i - 1]}</h5>
+      <h5 class="card-title" id="question-text${i}">${questionArray[i - 1]}</h5>
       <select class="selector" id="selector${i}"></select>
     </div>
     </div
@@ -103,45 +104,86 @@
 
     var scoreArray = [];
 
-    for (i = 1; i < 11; i++) {
-      var score = $(`#selector${i} option:selected`).val();
+    for (i = 1; i < 8; i++) {
+      var score = parseInt($(`#selector${i} option:selected`).val());
 
-      // if (score === null) {
-      //   console.log(`Quesiton #${i} has a null selection.`);
-      //   scoreArray.push(``);
-      // } else {
-      scoreArray.push(score);
-      // };
-    }
-
-    var newFriend = {
-      "name": $("#name").val().trim(),
-      "slackID": $("#slack-id").val().trim(),
-      "scores": scoreArray
+      if (score === 0) {
+        console.log(`Quesiton #${i} has a null selection.`);
+        scoreArray.push(null);
+      } else {
+        scoreArray.push(score);
+      };
     };
 
-    $.post(`/api/friends`, newFriend)
-      .then((data) => {
-        // console.log(data);
-      });
+    if (scoreArray.includes(null)) {
+      var nullIndex = scoreArray.indexOf(null);
 
-    $.get(`api/friends`, (data) => {
-      console.log(data);
-      console.log(`There are ${data.length} friends in the system.`);
-      findMatch(data, data[data.length - 1]);
-    })
+      for (i = 0; i < scoreArray.length; i++) {
+        if (scoreArray[i] === null) {
+          $(`#null-answer-prompt${i + 1}`).remove();
+          $(`#question-text${i + 1}`).append(`
+          <em class="null-answer-prompt" id="null-answer-prompt${i + 1}"><br>Answer required</em>
+          `);
+        } else {
+          $(`#null-answer-prompt${i + 1}`).remove();
+        }
+      };
+      $('html, body').animate({
+        scrollTop: $(`#question-text${nullIndex + 1}`).offset().top
+      }, 1000);
+    } else {
+
+      var newFriend = {
+        "name": $("#name").val().trim(),
+        "slackID": $("#slack-id").val().trim(),
+        "scores": scoreArray
+      };
+
+      $.post(`/api/friends`, newFriend)
+        .then((data) => {
+          // console.log(data);
+        });
+
+      $.get(`api/friends`, (data) => {
+        console.log(data);
+        console.log(`There are ${data.length} friends in the system.`);
+        findMatch(data, data[data.length - 1]);
+      })
+    };
   })
 
   function findMatch(allData, yourData) {
     console.log(`Here are the possible friends`);
 
+    var sumDiffArray = [];
+
     for (i = 0; i < allData.length - 1; i++) {
       console.log(allData[i].name);
       console.log(allData[i].scores);
+
+      var sumDiff = 0;
+
+      for (a = 0; a < allData[i].scores.length; a++) {
+        var diff = Math.abs(allData[i].scores[a] - yourData.scores[a]);
+        sumDiff = sumDiff + diff;
+      };
+
+      sumDiffArray.push(sumDiff);
     }
+
+    var minDiff = Math.min.apply(Math, sumDiffArray);
+
+    var matchIndex = sumDiffArray.indexOf(minDiff);
+
+    console.log(`Sum of difference array:`)
+    console.log(sumDiffArray);
+    console.log(allData[matchIndex].name);
+    // console.log(allData[matchIndex].scores);
+    // console.log(minDiff);
+
     console.log(`******`);
     console.log(yourData.name);
-    console.log(yourData.scores);
+    // console.log(yourData.scores);
 
   }
 
