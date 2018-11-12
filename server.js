@@ -58,11 +58,6 @@ var friends = [
         name: 'Dr. Whatever',
         slackID: 'whatev-Rx',
         scores: ['4', '2', '3', '4', '3', '2', '1']
-    },
-    {
-        name: 'Tarah Test',
-        slackID: 'tarah',
-        scores: ['1', '1', '1', '1', '1', '1', '5']
     }
 ];
 
