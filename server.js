@@ -33,31 +33,34 @@ var friends = [
             1,
             1,
             1,
-            5
+            5,
+            5,
+            4,
+            4
         ]
     },
     {
         name: 'Ms. Neutral',
         slackID: 'vanilla',
-        scores: ['3', '3', '3', '3', '3', '3', '3']
+        scores: ['3', '3', '3', '3', '3', '3', '3', '3', '3', '3']
     },
 
     {
         name: 'Mr. Asshole',
         slackID: 'asshole',
-        scores: ['5', '1', '5', '5', '5', '5', '1']
+        scores: ['5', '1', '5', '5', '5', '5', '1', '1', '1', '1']
     },
 
     {
         name: 'Mrs. Nice',
         slackID: 'nice-lady',
-        scores: ['1', '4', '2', '4', '1', '2', '4']
+        scores: ['1', '4', '2', '4', '1', '2', '4', '2', '2', '1']
     },
 
     {
         name: 'Dr. Whatever',
         slackID: 'whatev-Rx',
-        scores: ['4', '2', '3', '4', '3', '2', '1']
+        scores: ['4', '2', '3', '4', '3', '2', '1', '1', '1', '4']
     }
 ];
 

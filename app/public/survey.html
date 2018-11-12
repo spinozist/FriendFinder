@@ -20,7 +20,7 @@
       <div class="jumbotron">
         <h2 class="display-4">friendFinder</h2>
         <h1 class="display-4">Survey.</h1>
-        <p class="lead">Answer the following questions to find a match</p>
+        <p class="lead">Answer the following questions to find a match.</p>
         <hr class="my-4">
         <form>
           <div class="form-group">
@@ -49,6 +49,10 @@
     width: 50%;
     margin: auto;
   }
+
+  .null-answer-prompt {
+    color: red;
+  }
 </style>
 
 <script type="text/javascript">
@@ -61,6 +65,9 @@
     "More can be accomplished when people work together.",
     "Healthcare should be a universal right.",
     "You frequently think people are talking behind your back.",
+    "The end is nigh.",
+    "The good things about the Internet outweigh the bad ones.",
+    "You think children could make most modern art."
   ];
 
   var options = [
@@ -104,7 +111,7 @@
 
     var scoreArray = [];
 
-    for (i = 1; i < 8; i++) {
+    for (i = 1; i < questionArray.length + 1; i++) {
       var score = parseInt($(`#selector${i} option:selected`).val());
 
       if (score === 0) {
@@ -183,9 +190,9 @@
 
     console.log(`******`);
     console.log(yourData.name);
+    console.log(yourData.scores);
+    
     alert(`Your closest match is ${allData[matchIndex].name}`);
-
-    // console.log(yourData.scores);
 
   }
 
