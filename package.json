@@ -1,7 +1,7 @@
 {
   "name": "friendfinder",
   "version": "1.0.0",
-  "description": "",
+  "description": "a finder of friends",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,9 @@
   "author": "erik woodworth",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    "path": "^0.12.7"
+    "express": "^4.16.4"
+  },
+  "engines": {
+    "node": "10.12.0"
   }
 }
