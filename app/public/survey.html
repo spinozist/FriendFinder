@@ -62,6 +62,16 @@
 </body>
 
 <style type="text/css">
+  body {
+    background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/TtcstKI/videoblocks-abstract-binary-polygon-plexus-nodes-connections-network-for-visuals-vj-internet-presentations-motion-background-hi-tech-technology-science-engineering-medical-dashboard-seamless-loop_ha2hqykym_thumbnail-full01.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .container {
+    margin-top: 5vh;
+  }
+
   .selector {
     width: 50%;
     margin: auto;
@@ -221,7 +231,8 @@
           <h5 class="modal-title" id="matchModalLabel">Thanks for taking the survey.</h5>
         </div>
         <div class="modal-body">
-            Your closest match is ${allData[matchIndex].name}!
+            Your closest match is <b>${allData[matchIndex].name}</b>!<br>
+            Their #SlackID is <b>${allData[matchIndex].slackID}</b>.
         </div>
         <div class="modal-footer">
           <a class="btn btn-primary btn-lg" href="/" role="button">Done</a>

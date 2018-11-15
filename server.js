@@ -34,7 +34,7 @@ var friends = [
         scores: ['3', '3', '3', '3', '3', '3', '3', '3', '3', '3']
     },
     {
-        name: 'Mr. Asshole',
+        name: 'Mr. Jerk',
         slackID: 'asshole',
         scores: ['5', '1', '5', '5', '5', '5', '1', '1', '1', '1']
     },
